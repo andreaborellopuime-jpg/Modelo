@@ -24,39 +24,12 @@ body {
   isolation: isolate;
 }
 
-/* foto de la escuela difuminada con capa azul */
+/* fondo: tu imagen (foto de la escuela con capa azul y puntitos) */
 .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
-    linear-gradient(rgba(44, 74, 125, .82), rgba(44, 74, 125, .82)),
-    url("img/escuela.webp") center / cover no-repeat;
-  filter: blur(5px);
-  transform: scale(1.08); /* tapa los bordes que deja el blur */
-}
-
-/* puntitos decorativos en las esquinas */
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  width: 45%;
-  height: 40%;
-  background-image: radial-gradient(rgba(255,255,255,.75) 2.5px, transparent 3px);
-  background-size: 18px 18px;
-  pointer-events: none;
-}
-.hero::before {
-  top: 0; left: 0;
-  -webkit-mask-image: radial-gradient(ellipse at top left, #000, transparent 70%);
-          mask-image: radial-gradient(ellipse at top left, #000, transparent 70%);
-}
-.hero::after {
-  bottom: 0; right: 0;
-  -webkit-mask-image: radial-gradient(ellipse at bottom right, #000, transparent 70%);
-          mask-image: radial-gradient(ellipse at bottom right, #000, transparent 70%);
+  background: url("img/fondo.jpg") center / cover no-repeat;
 }
 
 /* círculo: aro azul grisáceo + círculo blanco + logo */
