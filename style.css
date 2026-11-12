@@ -1,0 +1,212 @@
+:root {
+  --azul: #3b566e;
+  --arena: #c4a68a;
+  --fondo-top: #a9b6c4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(to bottom, var(--fondo-top), #f6f8fa 85%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* ---------- PORTADA ---------- */
+.hero {
+  position: relative;
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* foto de la escuela difuminada con capa azul */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(rgba(44, 74, 125, .82), rgba(44, 74, 125, .82)),
+    url("img/escuela.webp") center / cover no-repeat;
+  filter: blur(5px);
+  transform: scale(1.08); /* tapa los bordes que deja el blur */
+}
+
+/* puntitos decorativos en las esquinas */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 45%;
+  height: 40%;
+  background-image: radial-gradient(rgba(255,255,255,.75) 2.5px, transparent 3px);
+  background-size: 18px 18px;
+  pointer-events: none;
+}
+.hero::before {
+  top: 0; left: 0;
+  -webkit-mask-image: radial-gradient(ellipse at top left, #000, transparent 70%);
+          mask-image: radial-gradient(ellipse at top left, #000, transparent 70%);
+}
+.hero::after {
+  bottom: 0; right: 0;
+  -webkit-mask-image: radial-gradient(ellipse at bottom right, #000, transparent 70%);
+          mask-image: radial-gradient(ellipse at bottom right, #000, transparent 70%);
+}
+
+/* círculo: aro azul grisáceo + círculo blanco + logo */
+.hero-logo {
+  position: relative;
+  z-index: 2;
+  width: clamp(240px, 40vw, 440px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--azul);
+  display: grid;
+  place-items: center;
+}
+.hero-logo-inner {
+  width: 88%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+}
+.hero-logo-inner img {
+  max-width: 58%;
+  max-height: 70%;
+  object-fit: contain;
+}
+
+/* ---------- TARJETAS ---------- */
+.contenido {
+  padding: 3rem 1rem 4rem;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(1rem, 4vw, 3rem);
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.card-top,
+.card-icon {
+  background: var(--azul);
+}
+
+/* parte superior: semicírculo blanco (lugar para una imagen) */
+.card-top {
+  height: 150px;
+  border-radius: 8px 8px 0 0;
+  border: 3px solid var(--azul);
+  border-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+.card-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
+.card-icon {
+  height: 270px;
+  display: grid;
+  place-items: center;
+  border-radius: 0 0 8px 8px;
+}
+.card-icon svg { width: 90px; height: 90px; }
+
+/* pie de la tarjeta con flecha */
+.card-arrow {
+  height: 80px;
+  border: 0;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #d6dce3, #b3bfcb);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  margin: 0 3px;
+  display: grid;
+  place-items: center;
+}
+.card-arrow svg {
+  width: 48px;
+  fill: none;
+  stroke: var(--azul);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .4s ease;
+}
+.card-arrow[aria-expanded="true"] svg { transform: rotate(180deg); }
+.card-arrow:hover svg { stroke: #2a3f52; }
+.card-arrow:focus-visible { outline: 3px solid var(--arena); outline-offset: 2px; }
+
+/* ---------- PANELES (todo el ancho, debajo de las tarjetas) ---------- */
+.paneles {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .45s ease, margin-top .45s ease;
+}
+.panel.abierto {
+  grid-template-rows: 1fr;
+  margin-top: 2rem;
+}
+
+.panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.panel-contenido {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--azul);
+  border-radius: 14px;
+  padding: 2rem;
+}
+
+.panel-contenido img {
+  flex: 1 1 320px;
+  max-width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.panel-texto {
+  flex: 2 1 320px;
+}
+.panel-texto h3 {
+  color: var(--arena);
+  font-size: 1.6rem;
+  margin-bottom: .75rem;
+}
+.panel-texto p {
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
