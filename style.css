@@ -29,7 +29,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url("img/fondo.jpg") center / cover no-repeat;
+  background: url("fondo.jpg") center / cover no-repeat;
 }
 
 /* círculo: aro azul grisáceo + círculo blanco + logo */
