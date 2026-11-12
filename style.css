@@ -1,0 +1,162 @@
+:root {
+  --azul: #3b566e;
+  --arena: #c4a68a;
+  --fondo-top: #a9b6c4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(to bottom, var(--fondo-top), #f6f8fa 85%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* ---------- PORTADA ---------- */
+.hero {
+  position: relative;
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(rgba(44, 74, 125, .86), rgba(44, 74, 125, .86)),
+    url("img/escuela.webp") center / cover no-repeat;
+  overflow: hidden;
+}
+
+/* puntitos decorativos en las esquinas */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 45%;
+  height: 40%;
+  background-image: radial-gradient(rgba(255,255,255,.75) 2.5px, transparent 3px);
+  background-size: 18px 18px;
+  pointer-events: none;
+}
+.hero::before {
+  top: 0; left: 0;
+  -webkit-mask-image: radial-gradient(ellipse at top left, #000, transparent 70%);
+          mask-image: radial-gradient(ellipse at top left, #000, transparent 70%);
+}
+.hero::after {
+  bottom: 0; right: 0;
+  -webkit-mask-image: radial-gradient(ellipse at bottom right, #000, transparent 70%);
+          mask-image: radial-gradient(ellipse at bottom right, #000, transparent 70%);
+}
+
+.hero-logo {
+  position: relative;
+  z-index: 1;
+  width: clamp(220px, 40vw, 440px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--azul);
+  display: grid;
+  place-items: center;
+}
+.hero-logo img {
+  width: 88%;
+  height: 88%;
+  padding: 14%;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: contain;
+}
+
+/* ---------- TARJETAS ---------- */
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(1rem, 4vw, 3rem);
+  flex-wrap: wrap;
+  padding: 3rem 1rem 4rem;
+}
+
+.card {
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.card-top,
+.card-icon,
+.card-extra {
+  background: var(--azul);
+}
+
+/* parte superior: semicírculo blanco (lugar para una imagen) */
+.card-top {
+  height: 150px;
+  border-radius: 8px 8px 0 0;
+  border: 3px solid var(--azul);
+  border-bottom: 0;
+  position: relative;
+  overflow: hidden;
+}
+.card-top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
+.card-icon {
+  height: 270px;
+  display: grid;
+  place-items: center;
+}
+.card-icon svg { width: 90px; height: 90px; }
+
+/* contenido desplegable */
+.card-extra {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .4s ease;
+}
+.card-extra-inner {
+  overflow: hidden;
+  padding: 0 1rem;
+}
+.card-extra.abierto { grid-template-rows: 1fr; }
+.card-extra.abierto .card-extra-inner { padding: 0 1rem 1.25rem; }
+
+.card-extra img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: .75rem;
+}
+.card-extra h3 { margin-bottom: .4rem; color: var(--arena); }
+.card-extra p  { font-size: .95rem; line-height: 1.45; }
+
+/* pie de la tarjeta con flecha */
+.card-arrow {
+  height: 80px;
+  border: 0;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #d6dce3, #b3bfcb);
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  margin: 0 3px;
+  display: grid;
+  place-items: center;
+}
+.card-arrow svg {
+  width: 48px;
+  fill: none;
+  stroke: var(--azul);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .4s ease;
+}
+.card-arrow[aria-expanded="true"] svg { transform: rotate(180deg); }
+.card-arrow:hover svg { stroke: #2a3f52; }
+.card-arrow:focus-visible { outline: 3px solid var(--arena); outline-offset: 2px; }

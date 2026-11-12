@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EEST N°2 Tandil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- PORTADA -->
+  <header class="hero">
+    <div class="hero-logo">
+      <img src="img/logo.png" alt="Logo EEST N°2 Tandil">
+    </div>
+  </header>
+
+  <!-- TARJETAS -->
+  <main class="cards">
+
+    <article class="card">
+      <div class="card-top"><!-- imagen opcional --></div>
+      <div class="card-icon">
+        <svg viewBox="-40 -40 80 80" aria-hidden="true">
+          <circle r="22" fill="#c4a68a"/>
+          <circle r="30" fill="none" stroke="#c4a68a" stroke-width="10" stroke-dasharray="9.42 9.42"/>
+          <circle r="9" fill="#3b566e"/>
+        </svg>
+      </div>
+      <div class="card-extra" id="extra1">
+        <div class="card-extra-inner">
+          <img src="img/escuela.webp" alt="">
+          <h3>Título 1</h3>
+          <p>Acá va el texto de la primera tarjeta.</p>
+        </div>
+      </div>
+      <button class="card-arrow" aria-expanded="false" aria-controls="extra1" aria-label="Mostrar más">
+        <svg viewBox="0 0 40 24"><polyline points="4,4 20,20 36,4"/></svg>
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="card-top"></div>
+      <div class="card-icon">
+        <svg viewBox="0 0 80 80" aria-hidden="true">
+          <path d="M18 8 H62 C62 34 52 44 44 46 V64 Q44 68 58 71 V74 H22 V71 Q36 68 36 64 V46 C28 44 18 34 18 8 Z" fill="#c4a68a"/>
+        </svg>
+      </div>
+      <div class="card-extra" id="extra2">
+        <div class="card-extra-inner">
+          <img src="img/escuela.webp" alt="">
+          <h3>Título 2</h3>
+          <p>Acá va el texto de la segunda tarjeta.</p>
+        </div>
+      </div>
+      <button class="card-arrow" aria-expanded="false" aria-controls="extra2" aria-label="Mostrar más">
+        <svg viewBox="0 0 40 24"><polyline points="4,4 20,20 36,4"/></svg>
+      </button>
+    </article>
+
+    <article class="card">
+      <div class="card-top"></div>
+      <div class="card-icon">
+        <svg viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="33" fill="none" stroke="#c4a68a" stroke-width="5"/>
+          <polyline points="40,18 40,41 56,42" fill="none" stroke="#c4a68a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="card-extra" id="extra3">
+        <div class="card-extra-inner">
+          <img src="img/escuela.webp" alt="">
+          <h3>Título 3</h3>
+          <p>Acá va el texto de la tercera tarjeta.</p>
+        </div>
+      </div>
+      <button class="card-arrow" aria-expanded="false" aria-controls="extra3" aria-label="Mostrar más">
+        <svg viewBox="0 0 40 24"><polyline points="4,4 20,20 36,4"/></svg>
+      </button>
+    </article>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
